@@ -699,8 +699,8 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
     dlg = xfce_titled_dialog_new_with_buttons(
                 _("Mount Plugin"),
                 GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (plugin))),
-                GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
-                GTK_STOCK_CLOSE, GTK_RESPONSE_OK, NULL);
+                GTK_DIALOG_DESTROY_WITH_PARENT,
+                "gtk-close", GTK_RESPONSE_OK, NULL);
 
     xfce_titled_dialog_set_subtitle (XFCE_TITLED_DIALOG (dlg), _("Properties"));
     gtk_window_set_icon_name(GTK_WINDOW(dlg),"drive-harddisk");
@@ -714,7 +714,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
 
     md->dialog = dlg;
 
-    vbox = GTK_DIALOG (dlg)->vbox;
+    vbox = GTK_DIALOG (gtk_dialog_get_content_area(dlg));
 
     _notebook = gtk_notebook_new ();
     gtk_widget_show (_notebook);
