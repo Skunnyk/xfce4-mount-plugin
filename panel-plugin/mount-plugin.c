@@ -841,38 +841,36 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
         "commands or prepend \"sync %d &&\" to the \"unmount %d\" command.\n"
         "'%d' is used to specify the device, '%m' for the mountpoint."));
 
-    md->box_mount_commands = gtk_table_new (2, 2, FALSE);
+    md->box_mount_commands = gtk_grid_new ();
     gtk_container_add (GTK_CONTAINER (_eventbox), md->box_mount_commands);
     gtk_widget_show (md->box_mount_commands);
 
     _label = gtk_label_new_with_mnemonic (_("_Mount command:"));
     gtk_widget_set_valign(_label,GTK_ALIGN_CENTER);
     gtk_widget_show (_label);
-    gtk_table_attach (GTK_TABLE(md->box_mount_commands), _label, 0, 1, 0, 1,
-                    GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_grid_attach (GTK_GRID(md->box_mount_commands), _label, 0, 0, 1, 1);
 
     _label = gtk_label_new_with_mnemonic (_("_Unmount command:"));
     gtk_widget_set_valign(_label,GTK_ALIGN_CENTER);
     gtk_widget_show (_label);
-    gtk_table_attach (GTK_TABLE(md->box_mount_commands), _label, 0, 1, 1, 2,
-                    GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_grid_attach (GTK_GRID(md->box_mount_commands), _label, 0, 1, 1, 1);
 
     md->string_mount_command = gtk_entry_new ();
     DBG("mt->mount_command: %s", mt->mount_command);
     gtk_entry_set_text (GTK_ENTRY(md->string_mount_command ),
                     g_strdup(mt->mount_command ));
     gtk_widget_show (md->string_mount_command );
-    gtk_table_attach (GTK_TABLE(md->box_mount_commands),
-                    md->string_mount_command , 1, 2,
-                    0, 1, GTK_EXPAND|GTK_FILL, GTK_SHRINK, BORDER, 0);
+    gtk_grid_attach (GTK_GRID(md->box_mount_commands),
+                    md->string_mount_command , 1, 0,
+                    1, 1);
 
     md->string_umount_command = gtk_entry_new ();
     gtk_entry_set_text (GTK_ENTRY(md->string_umount_command ),
                     g_strdup(mt->umount_command ));
     gtk_widget_show (md->string_umount_command );
-    gtk_table_attach (GTK_TABLE(md->box_mount_commands),
-                    md->string_umount_command , 1, 2,
-                    1, 2, GTK_EXPAND|GTK_FILL, GTK_SHRINK, BORDER, 0);
+    gtk_grid_attach (GTK_GRID(md->box_mount_commands),
+                    md->string_umount_command , 1, 1,
+                    2, 1);
 
     if (!set_active) /* following command wasn't executed by signal handler! */
         gtk_widget_set_sensitive ( md->box_mount_commands, FALSE );
