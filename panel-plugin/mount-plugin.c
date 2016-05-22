@@ -176,7 +176,7 @@ disk_display_new (t_disk *disk, t_mounter *mounter)
         /*change to uniform label size*/
         /*gtk_label_set_width_chars(GTK_LABEL(dd->label_disk), 32); */
         /* gtk_label_set_justify(GTK_LABEL(dd->label_disk),GTK_JUSTIFY_LEFT); */
-        gtk_misc_set_alignment(GTK_MISC(dd->label_disk),0.0, 0.5);
+        gtk_widget_set_valign(dd->label_disk,GTK_ALIGN_CENTER);
         gtk_box_pack_start(GTK_BOX(dd->hbox),dd->label_disk,FALSE,TRUE,0);
 
         dd->label_mount_info = gtk_label_new("");
@@ -185,7 +185,8 @@ disk_display_new (t_disk *disk, t_mounter *mounter)
         gtk_label_set_use_markup(GTK_LABEL(dd->label_mount_info),TRUE);
         /* gtk_label_set_justify (GTK_LABEL(dd->label_mount_info),
                                GTK_JUSTIFY_RIGHT); */
-        gtk_misc_set_alignment(GTK_MISC(dd->label_mount_info),1.0, 0.5);
+        gtk_widget_set_halign((dd->label_mount_info),GTK_ALIGN_END);
+        gtk_widget_set_valign((dd->label_mount_info),GTK_ALIGN_CENTER);
         gtk_box_pack_start(GTK_BOX(dd->hbox),dd->label_mount_info,TRUE,TRUE,0);
 
         dd->progress_bar = gtk_progress_bar_new();
@@ -845,13 +846,13 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
     gtk_widget_show (md->box_mount_commands);
 
     _label = gtk_label_new_with_mnemonic (_("_Mount command:"));
-    gtk_misc_set_alignment (GTK_MISC(_label), 0.0, 0.5);
+    gtk_widget_set_valign(_label,GTK_ALIGN_CENTER);
     gtk_widget_show (_label);
     gtk_table_attach (GTK_TABLE(md->box_mount_commands), _label, 0, 1, 0, 1,
                     GTK_FILL, GTK_SHRINK, 0, 0);
 
     _label = gtk_label_new_with_mnemonic (_("_Unmount command:"));
-    gtk_misc_set_alignment (GTK_MISC(_label), 0.0, 0.5);
+    gtk_widget_set_valign(_label,GTK_ALIGN_CENTER);
     gtk_widget_show (_label);
     gtk_table_attach (GTK_TABLE(md->box_mount_commands), _label, 0, 1, 1, 2,
                     GTK_FILL, GTK_SHRINK, 0, 0);
