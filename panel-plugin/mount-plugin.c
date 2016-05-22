@@ -715,7 +715,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
 
     md->dialog = dlg;
 
-    vbox = GTK_DIALOG (gtk_dialog_get_content_area(dlg));
+    vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
 
     _notebook = gtk_notebook_new ();
     gtk_widget_show (_notebook);
