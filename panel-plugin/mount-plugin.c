@@ -147,7 +147,7 @@ disk_display_new (t_disk *disk, t_mounter *mounter)
         g_object_set_data (G_OBJECT(dd->menu_item), "mounter",
                            (gpointer)mounter);
 
-        dd->hbox = gtk_hbox_new (FALSE, 10);
+        dd->hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
         gtk_container_add (GTK_CONTAINER(dd->menu_item), dd->hbox);
 
         if (mounter->trim_devicenames)
@@ -723,7 +723,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
                         TRUE, TRUE, BORDER);
 
     /* --------------- General tab page ----------------------*/
-    _vbox = gtk_vbox_new (FALSE, BORDER);
+    _vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, BORDER);
     gtk_container_border_width (GTK_CONTAINER(_vbox), BORDER);
     gtk_widget_show (_vbox);
 
@@ -751,7 +751,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
     gtk_widget_set_tooltip_text(_eventbox,
         _("You can specify a distinct icon to be displayed in the panel."));
 
-    _hbox = gtk_hbox_new (FALSE, BORDER);
+    _hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, BORDER);
     gtk_widget_show (_hbox);
     gtk_container_add (GTK_CONTAINER(_eventbox), _hbox );
 
@@ -771,7 +771,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
     gtk_notebook_append_page (GTK_NOTEBOOK(_notebook), _vbox, _label);
 
     /* --------------- Commands tab page ----------------------*/
-    _vbox = gtk_vbox_new (FALSE, BORDER);
+    _vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, BORDER);
     gtk_container_border_width (GTK_CONTAINER(_vbox), BORDER);
     gtk_widget_show (_vbox);
 
@@ -786,7 +786,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
         "If you are unsure what to insert, try \"exo-open %m\".\n"
         "'%d' can be used to specify the device, '%m' for the mountpoint."));
 
-    _hbox = gtk_hbox_new (FALSE, BORDER);
+    _hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, BORDER);
     gtk_widget_show (_hbox);
     gtk_container_add (GTK_CONTAINER (_eventbox), _hbox);
 
@@ -803,7 +803,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
     gtk_box_pack_start (GTK_BOX(_hbox), md->string_cmd, TRUE, TRUE, 0);
 
         /* Specify custom commands */
-    _vbox2 = gtk_vbox_new (FALSE, BORDER);
+    _vbox2 = gtk_box_new (GTK_ORIENTATION_VERTICAL, BORDER);
     gtk_box_pack_start (GTK_BOX (_vbox), GTK_WIDGET (_vbox2), FALSE, FALSE,
                     0);
     gtk_widget_show (_vbox2);
@@ -881,7 +881,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
     gtk_notebook_append_page (GTK_NOTEBOOK(_notebook), _vbox, _label);
 
     /* File systems tab page */
-    _vbox = gtk_vbox_new (FALSE, BORDER);
+    _vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, BORDER);
     gtk_container_border_width (GTK_CONTAINER(_vbox), BORDER);
     gtk_widget_show (_vbox);
 
@@ -944,7 +944,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
     gtk_widget_show (_eventbox);
     gtk_widget_set_tooltip_text(_eventbox,
         _("Trim the device names to the number of characters specified in the spin button."));
-    _hbox = gtk_hbox_new (FALSE, BORDER);
+    _hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, BORDER);
     gtk_widget_show (_hbox);
     gtk_container_add (GTK_CONTAINER (_eventbox), _hbox );
     gtk_widget_set_sensitive(GTK_WIDGET(_hbox), !mt->exclude_devicenames);
@@ -981,7 +981,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
         "An asterisk (*) can be used as a placeholder at the end of\n"
         "a path, e.g., \"/mnt/*\" to exclude any mountpoints below \"/mnt\".\n"));
 
-    _vbox2 = gtk_vbox_new (FALSE, BORDER);
+    _vbox2 = gtk_box_new (GTK_ORIENTATION_VERTICAL, BORDER);
     gtk_widget_show (_vbox2);
     gtk_container_add (GTK_CONTAINER (_eventbox), _vbox2 );
 
