@@ -719,13 +719,13 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
 
     _notebook = gtk_notebook_new ();
     gtk_widget_show (_notebook);
-    gtk_container_border_width (GTK_CONTAINER(_notebook), BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER(_notebook), BORDER);
     gtk_box_pack_start (GTK_BOX (vbox), GTK_WIDGET(_notebook),
                         TRUE, TRUE, BORDER);
 
     /* --------------- General tab page ----------------------*/
     _vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, BORDER);
-    gtk_container_border_width (GTK_CONTAINER(_vbox), BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER(_vbox), BORDER);
     gtk_widget_show (_vbox);
 
        /* Show "unmounted" message */
@@ -773,7 +773,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
 
     /* --------------- Commands tab page ----------------------*/
     _vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, BORDER);
-    gtk_container_border_width (GTK_CONTAINER(_vbox), BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER(_vbox), BORDER);
     gtk_widget_show (_vbox);
 
         /* After-mount command */
@@ -883,7 +883,7 @@ mounter_create_options (XfcePanelPlugin *plugin, t_mounter *mt)
 
     /* File systems tab page */
     _vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, BORDER);
-    gtk_container_border_width (GTK_CONTAINER(_vbox), BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER(_vbox), BORDER);
     gtk_widget_show (_vbox);
 
         /* show include_NFSs */
